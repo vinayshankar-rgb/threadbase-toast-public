@@ -1,4 +1,4 @@
-export default function ToastContainer({ toasts, onDismiss }) {
+/*export default function ToastContainer({ toasts, onDismiss }) {
   // TODO (Task 2): render the toasts.
   //   - wrap them in a <div className="toast-container"> (already fixed-position in index.css)
   //   - map over `toasts`; for each toast render a <div>:
@@ -10,4 +10,23 @@ export default function ToastContainer({ toasts, onDismiss }) {
   //
   // Right now it renders nothing, so no toasts appear even when the state has them.
   return null;
+}
+*/
+
+
+export default function ToastContainer({ toasts, onDismiss }) {
+  return (
+    <div className="toast-container">
+      {toasts.map((toast) => (
+        <div
+          key={toast.id}
+          className={`toast toast-${toast.type}`}
+          onClick={() => onDismiss(toast.id)}
+          role="status"
+        >
+          {toast.message}
+        </div>
+      ))}
+    </div>
+  );
 }
